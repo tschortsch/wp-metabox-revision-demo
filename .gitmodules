@@ -1,3 +1,6 @@
 [submodule "cms"]
 	path = cms
 	url = https://github.com/WordPress/WordPress.git
+[submodule "content/plugins/wp-post-meta-revisions"]
+	path = content/plugins/wp-post-meta-revisions
+	url = https://github.com/adamsilverstein/wp-post-meta-revisions.git
