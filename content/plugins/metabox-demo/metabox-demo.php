@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Metabox Demo
- * Description: A demo plugin which shows revisioning of a custom metabox field.
+ * Description: A demo plugin which shows revisioning of a custom metabox field. Based on http://www.smashingmagazine.com/2011/10/create-custom-post-meta-boxes-wordpress/.
  * Author: Juerg Hunziker <juerg.hunziker@gmail.com>
  * Version: 1.0.0
  * Date: 21.12.2015
@@ -79,3 +79,10 @@ function cmr_save_post_meta( $post_id, $post ) {
 		delete_post_meta( $post_id, $meta_key, $meta_value );
 	}
 }
+
+// Use wp-post-meta-revisions plugin to create revisions of custom meta field
+function add_meta_keys_to_revision( $keys ) {
+	$keys[] = 'cmr-customfield';
+	return $keys;
+}
+add_filter( 'wp_post_revision_meta_keys', 'add_meta_keys_to_revision' );
