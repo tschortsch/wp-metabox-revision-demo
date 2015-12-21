@@ -79,7 +79,7 @@ define( 'NONCE_SALT',       'y#=|c(^nk.a_9]xh&_}7;H-M!+c`zKm0+Y@YBY/K{s+OH6KT3{~
 
 
 define( 'AUTOSAVE_INTERVAL',	86400 );
-define( 'WP_POST_REVISIONS', 	false );
+define( 'WP_POST_REVISIONS', 	true );
 
 // ===================================================
 // DO NOT EDIT FORM HERE ! ! !
