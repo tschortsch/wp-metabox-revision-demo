@@ -1,0 +1,61 @@
+<?php
+
+// ===================================================
+// DB config
+// ===================================================
+
+define( 'DB_NAME',				'wp-metabox-revision' );
+define( 'DB_USER',				'root' );
+define( 'DB_PASSWORD',			'' );
+define( 'DB_HOST',				'localhost' );
+
+
+// ===================================================
+// Various
+// ===================================================
+
+define( 'DEV_MODE',				true );
+define( 'WP_DEBUG',				true );
+define( 'WP_DEBUG_LOG',			true );
+define( 'WP_DEBUG_DISPLAY',		true );
+define( 'SCRIPT_DEBUG',			true );
+define( 'SAVEQUERIES',			true );
+define( 'FS_METHOD',			'direct');
+
+
+// ===================================================
+// Cache
+// ===================================================
+
+define( 'WP_CACHE',				false );
+
+
+// ===================================================
+// Define Siteurl
+// ===================================================
+
+define( 'WP_SITEURL',			'http://metabox-demo.lo/wordpress' );
+define( 'WP_HOME',				'http://metabox-demo.lo' );
+
+
+// ===================================================
+// Define path & url for Content
+// ===================================================
+
+define( 'WP_CONTENT_DIR',		dirname( __FILE__ ) . '/content' );
+define( 'WP_CONTENT_URL',		'http://' . $_SERVER['HTTP_HOST'] . '/content' );
+
+
+// ===================================================
+// Define path & url for Uploads and Plugins
+// ===================================================
+
+define( 'WP_PLUGIN_URL',		WP_HOME . '/content/plugins' );
+
+
+// ===================================================
+// Set path to MU Plugins
+// ===================================================
+
+define( 'WPMU_PLUGIN_DIR',		dirname( __FILE__ ) . '/content/mu-plugins' );
+define( 'WPMU_PLUGIN_URL',		WP_HOME . '/content/mu-plugins' );
