@@ -14,13 +14,23 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 /* Fire our meta box setup function on the post editor screen. */
 add_action( 'load-post.php', 'cmr_meta_boxes_setup' );
 add_action( 'load-post-new.php', 'cmr_meta_boxes_setup' );
+add_filter( 'wp_post_revision_title_expanded', 'cmr_meta_add_details_to_list', 10, 2 );
+
+/**
+ * Add meta details to the revisions list.
+ */
+function cmr_meta_add_details_to_list( $title, $revision ) {
+	$title .= ' <span class="cmr-custom-meta">Custom meta: ' . get_post_meta( $revision->ID, 'cmr-customfield', true )[0] . '</span>';
+	return $title;
+
+}
 
 /* Meta box setup function. */
 function cmr_meta_boxes_setup() {
 	/* Add meta boxes on the 'add_meta_boxes' hook. */
 	add_action( 'add_meta_boxes', 'cmr_add_post_meta_boxes' );
-	/* Save post meta on the 'save_post' hook. */
-	add_action( 'save_post', 'cmr_save_post_meta', 10, 2 );
+	/* Save post meta on the 'edit_post' hook. */
+	add_action( 'edit_post', 'cmr_save_post_meta', 10, 2 );
 }
 
 /* Create one or more meta boxes to be displayed on the post editor screen. */
@@ -75,8 +85,8 @@ function cmr_save_post_meta( $post_id, $post ) {
 		/* If the new meta value does not match the old value, update it. */
 		update_post_meta( $post_id, $meta_key, $new_meta_value );
 	} elseif ( '' == $new_meta_value && $meta_value ) {
-		/* If there is no new meta value but an old value exists, delete it. */
-		delete_post_meta( $post_id, $meta_key, $meta_value );
+		/* If there is no new meta value but an old value exists, clear it. */
+		update_post_meta( $post_id, $meta_key, $meta_value );
 	}
 }
 
